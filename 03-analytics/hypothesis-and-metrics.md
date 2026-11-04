@@ -1,17 +1,32 @@
-# Hypothesis & Success Metrics
+# Hypothesis & Success Metrics (Module 3)
 
-> **Module 3 · ★ Deliverable 3.** Repo file `03-analytics/hypothesis-and-metrics.md` — part of your submission.
-> Do the lab in the **Module 3 · Exercise Guide** (linked from the Module 3 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It feeds the **Problem, Value & Hypothesis** slide of your Module 6 final deck.
+## Pre-work · Hypothesis check
+- **Role , who you are solving for (from M2):** The Overwhelmed Browser
+- **Goal , what this user is ultimately trying to achieve:** Quickly find something new that suits her mood tonight, without it feeling like work.
+- **Friction / moment of misery , the specific pain blocking their goal:** She scrolls for about 20 minutes through roughly 15,000 titles, closes the app without watching anything, and ends up putting on a DVD (UXR-01). If she tries to describe what she wants, search fails.
+- **Current workaround , the external tool or manual process they rely on (M2):** She opens StreamLine wanting to watch something that evening.
+She scrolls the home rows for about 20 minutes.
+She tries to describe what she wants in search, and gets irrelevant results.
+She closes the app without playing anything.
+She picks a DVD from her own collection.
+- **Problem Hook , your one-sentence framing of the business crisis (M1):** As viewers struggle to find content worth watching, StreamLine risks turning its biggest advantage, choice, into a driver of disengagement and churn.
+- **Value Proposition , the outcome your initiative promised to deliver (M1):** StreamLine Spotlight turns overwhelming choice into trusted discovery by giving high-value viewers a curated destination for exceptional cinema, and it is urgent now because engagement is plateauing, churn is rising, and niche competitors are already winning on the curated experience StreamLine lacks.
 
-## Finalized product hypothesis
+## Read your data snapshots
+- **Does the funnel data confirm your M2 friction point, or does it tell a different story? Note where the numbers align with the qualitative pain you found and where they diverge.:** Yes, the data aligns with the friction point. Most visits end without playing anything. 71% of homepage visitors never start a title. That's the "scroll for twenty minutes and close it" behavior from Priya (UXR-01).
+- **Do the retention patterns align with the workaround your M2 persona used to find content? Note what the Mo. 0→1 drop suggests about the onboarding experience your persona described as frustrating.:** Yes, it matches the persona. Without intervention, the retention got worse as choice overload was growing as the catalog grew. The Mo 0 to 1 drop suggests that new users have the least personalization when onboarding and will scroll for a while without finding anything to watch.
+- **Does the LTV gap and the content mix (61% trending for Wanderers) confirm the moment of misery your persona described? Note which segment your persona is in and whether the data confirms their pain.:** Yes, my persona matches the Wanderers segment  because they're taking the easiest option when they can't decide similar to the overload behavior of my persona. The 61% trending suggests they will choose those titles on what is shown to them but doesn't mean they prefer or enjoy the suggestions.
+- **Does the low adoption confirm your persona is burdened by tools they don’t use? Note whether the low scheduling adoption (42%) for coordinators matches your M2 moment of misery.:** _(not filled in)_
+- **Does the workflow data match the manual process or hack you documented in M2? Note whether the specific drop-offs or time gaps explain why your persona avoids the digital tool.:** _(not filled in)_
+- **Look at the CSAT heatmap. Which specific cell most directly maps to your persona’s friction? Note how the NPS trend justifies the urgency of your M1 Problem Hook.:** _(not filled in)_
 
-> Based on [qual + quant evidence], I believe that [solving X] for [persona] will result in [outcome], as measured by a [X%] change in [success metric]. I will protect [guardrail metric] and make a go/no-go decision after [decision window].
-
-## Success metrics
-
-| Metric | Type | Target | Why it matters |
-|---|---|---|---|
-| _North-star_ | | _____ | _____ |
-| _Leading indicator_ | | _____ | _____ |
-| _Guardrail_ | | _____ | _____ |
+## Step 3 · Craft your hypothesis
+- **Qualitative evidence (from M2) , quote the specific friction / moment of misery for your persona:** "I open the app, scroll for like twenty minutes, and close it without watching anything. There's 15,000 titles but nothing I actually want. I ended up going back to a DVD."
+- **Quantitative evidence (from M3) , name the metric or data point that confirms the pain; cite the number:** 71% of homepage visitors never start a title. That's the "scroll for twenty minutes and close it" behavior from Priya (UXR-01).
+- **Persona , role, goal, and the friction you confirmed in the reconciliation steps:** Persona: The Overwhelmed Browser. Goal: Quickly find something new that suits her mood tonight, without it feeling like work. Friction: She scrolls for about 20 minutes through roughly 15,000 titles, closes the app without watching anything, and ends up putting on a DVD (UXR-01).
+- **Problem you are solving , one sentence describing the specific friction this initiative removes:** Choice overload stops Overwhelmed Browsers from deciding what to watch, so 71% of visitors leave without playing anything.
+- **Strategic outcome , what behaviour change do you expect, and how does it map to retention / revenue / churn?:** Spotlight turns indecision into viewing. Faster first plays build a habit that cuts first-month churn and protects about $758K a month per 1M subscribers, mostly from Wanderers.
+- **Primary success metric (initiative signal) , the leading indicator that tells you the gap is closing:** Median Time-to-Play (TTP) for Wanderers, meaning the time from opening the app to starting a title that's watched for at least 2 minutes.
+- **Guardrail metric (product signal) , the metric that must NOT drop; it protects your existing base:** Playback Start Failure Rate. Leave sessions that fail for technical reasons out of the TTP calculation so that playback defects don't hide or skew real changes in how quickly users decide.
+- **Decision window , how much time or data before you scale, pivot, or kill? minimum threshold to proceed?:** Get an early read at 3 weeks and decide at 8. Scale if Wanderers decide at least 15% faster and retain at least 5 pts better against a holdout, with playback stability holding.
+- **Draft your full hypothesis sentence , one to three sentences; quote the metric, name the persona, name the outcome:** Based on interviews in which users described scrolling for 20 minutes without watching and calling the catalog "a warehouse," plus funnel data showing 71% of visitors never press play, I believe that replacing choice overload with a short, hand-picked Spotlight Curated Rail for the Overwhelmed Browser (Wanderers, 41% of the base) will result in faster viewing decisions, more sessions with playback, and lower first-month churn, as measured by a 15% or greater reduction in median Time-to-Play. I will protect Playback Start Failure Rate and will make a go/no-go decision after 8 weeks against a holdout group, with an early read at week 3.
