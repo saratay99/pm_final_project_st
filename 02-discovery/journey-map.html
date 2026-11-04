@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreamLine Spotlight – Future-State Journey Map</title>
+<style>
+  :root {
+    --ink: #1d2433;
+    --muted: #5b6475;
+    --line: #e3e6ec;
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --accent: #c8553d;
+    --s1: #5b7db1;
+    --s2: #7a6bb0;
+    --s3: #c8853d;
+    --s4: #3f9a74;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", -apple-system, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.4;
+  }
+  .page {
+    max-width: 1280px;
+    margin: 24px auto;
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,.06);
+    padding: 32px 36px 28px;
+  }
+
+  /* Header */
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+  .eyebrow { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  h1 { font-size: 28px; font-weight: 700; margin-top: 4px; }
+  .subtitle { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .strategy { max-width: 420px; font-size: 12.5px; color: var(--muted); text-align: right; }
+  .strategy b { color: var(--ink); }
+
+  /* Persona strip */
+  .persona { display: grid; grid-template-columns: 1.1fr 1fr 1.6fr; gap: 14px; margin: 18px 0 22px; }
+  .persona div { background: var(--bg); border-radius: 8px; padding: 12px 14px; font-size: 13px; }
+  .persona h4 { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 4px; }
+  .persona .today { border-left: 4px solid var(--accent); }
+
+  /* Emotion curve */
+  .curve-wrap { position: relative; margin-bottom: 6px; }
+  .curve-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 2px; }
+  svg.curve { width: 100%; height: 90px; display: block; }
+
+  /* Timeline */
+  .timeline { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .rail { position: absolute; top: 22px; left: 6%; right: 6%; height: 4px; background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3), var(--s4)); border-radius: 2px; z-index: 0; }
+  .stage { position: relative; z-index: 1; display: flex; flex-direction: column; }
+  .node {
+    width: 48px; height: 48px; border-radius: 50%;
+    color: #fff; font-weight: 700; font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px; border: 4px solid #fff; box-shadow: 0 0 0 2px var(--line);
+  }
+  .card { border: 1px solid var(--line); border-top: 5px solid; border-radius: 8px; padding: 14px 14px 12px; flex: 1; background: #fff; }
+  .card h3 { font-size: 16px; }
+  .card .tag { font-size: 12px; color: var(--muted); font-style: italic; margin-bottom: 10px; }
+  .row { margin-top: 10px; }
+  .row h5 { font-size: 10.5px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 3px; }
+  .row p { font-size: 12.8px; }
+  .arrow { font-weight: 700; padding: 0 3px; }
+  .state-pill { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 999px; padding: 2px 9px; margin-bottom: 4px; color: #fff; }
+  .ref { font-size: 10.5px; color: var(--muted); margin-top: 3px; }
+
+  .s1 .node, .s1 .state-pill { background: var(--s1); } .s1 .card { border-top-color: var(--s1); } .s1 .arrow { color: var(--s1); }
+  .s2 .node, .s2 .state-pill { background: var(--s2); } .s2 .card { border-top-color: var(--s2); } .s2 .arrow { color: var(--s2); }
+  .s3 .node, .s3 .state-pill { background: var(--s3); } .s3 .card { border-top-color: var(--s3); } .s3 .arrow { color: var(--s3); }
+  .s4 .node, .s4 .state-pill { background: var(--s4); } .s4 .card { border-top-color: var(--s4); } .s4 .arrow { color: var(--s4); }
+
+  /* Advantages */
+  .advantages { margin-top: 22px; }
+  .advantages h2 { font-size: 15px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+  .adv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .adv { background: var(--bg); border-radius: 8px; padding: 12px 14px; font-size: 12.8px; }
+  .adv b { display: block; font-size: 13.5px; margin-bottom: 4px; }
+  .adv .vs { color: var(--muted); font-size: 12px; margin-top: 6px; }
+
+  footer { margin-top: 16px; font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; display: flex; justify-content: space-between; gap: 16px; }
+
+  @media print {
+    @page { size: landscape; margin: 0.35in; }
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; padding: 0; max-width: none; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 900px) {
+    .timeline, .adv-grid, .persona { grid-template-columns: 1fr; }
+    .rail, .curve-wrap { display: none; }
+    header { flex-direction: column; align-items: flex-start; }
+    .strategy { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <div class="eyebrow">Future-State Journey Map</div>
+      <h1>StreamLine Spotlight: The Overwhelmed Browser</h1>
+      <div class="subtitle">From a 20-minute scroll to trusted discovery, in four stages</div>
+    </div>
+    <div class="strategy">
+      <b>Strategy:</b> Restore brand authority and win back users through human-led curation, not mass-market scale.
+    </div>
+  </header>
+
+  <section class="persona">
+    <div>
+      <h4>Persona</h4>
+      Loyal, long-time subscriber who opens the app most evenings hoping to unwind.
+    </div>
+    <div>
+      <h4>Goal</h4>
+      Quickly find something new for tonight's mood, without it feeling like work.
+    </div>
+    <div class="today">
+      <h4>Today's workaround</h4>
+      Scrolls ~20 min through ~15,000 titles, gives up, and puts on a DVD or re-watches comfort shows. Mutes the TV to escape loud trailers.
+    </div>
+  </section>
+
+  <div class="curve-wrap">
+    <div class="curve-label">Emotional arc</div>
+    <svg class="curve" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-label="Emotion rises from calm to loyal across the four stages">
+      <defs>
+        <linearGradient id="g" x1="0" x2="1">
+          <stop offset="0" stop-color="#5b7db1"/><stop offset=".33" stop-color="#7a6bb0"/>
+          <stop offset=".66" stop-color="#c8853d"/><stop offset="1" stop-color="#3f9a74"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="80" x2="1000" y2="80" stroke="#e3e6ec" stroke-dasharray="4 4"/>
+      <path d="M125 62 C 250 60, 300 46, 375 44 S 550 30, 625 26 S 800 12, 875 10" fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="125" cy="62" r="7" fill="#5b7db1"/>
+      <circle cx="375" cy="44" r="7" fill="#7a6bb0"/>
+      <circle cx="625" cy="26" r="7" fill="#c8853d"/>
+      <circle cx="875" cy="10" r="7" fill="#3f9a74"/>
+    </svg>
+  </div>
+
+  <section class="timeline">
+    <div class="rail"></div>
+
+    <!-- Stage 1 -->
+    <div class="stage s1">
+      <div class="node">1</div>
+      <div class="card">
+        <h3>Arrive</h3>
+        <div class="tag">"What's your mood tonight?"</div>
+        <div class="row">
+          <h5>User Action</h5>
+          <p>Taps "Quiet Sunday" on opening the app <span class="arrow">→</span> catalog narrows instantly to her mood.</p>
+        </div>
+        <div class="row">
+          <h5>Internal State</h5>
+          <span class="state-pill">Calm &amp; in control</span>
+          <p>One small choice instead of 15,000 <span class="arrow">→</span> she feels calm, not anxious.</p>
+        </div>
+        <div class="row">
+          <h5>Pain Point Addressed</h5>
+          <p>The 20-minute scroll <span class="arrow">→</span> she starts with direction, not a wall of titles.</p>
+          <div class="ref">UXR-01</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="stage s2">
+      <div class="node">2</div>
+      <div class="card">
+        <h3>Discover</h3>
+        <div class="tag">The Spotlight Rail</div>
+        <div class="row">
+          <h5>User Action</h5>
+          <p>Browses a handful of hand-picked titles <span class="arrow">→</span> sees hidden gems, not franchise repeats.</p>
+        </div>
+        <div class="row">
+          <h5>Internal State</h5>
+          <span class="state-pill">Curious &amp; trusting</span>
+          <p>Human curation feels personal <span class="arrow">→</span> trust in recommendations comes back.</p>
+        </div>
+        <div class="row">
+          <h5>Pain Point Addressed</h5>
+          <p>Choice overload, no mood browsing <span class="arrow">→</span> someone "tells her what's good tonight."</p>
+          <div class="ref">UXR-09 · UXR-12</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="stage s3">
+      <div class="node">3</div>
+      <div class="card">
+        <h3>Decide</h3>
+        <div class="tag">Curator context, quiet preview</div>
+        <div class="row">
+          <h5>User Action</h5>
+          <p>Reads a short curator's note on why it fits <span class="arrow">→</span> commits without second-guessing.</p>
+        </div>
+        <div class="row">
+          <h5>Internal State</h5>
+          <span class="state-pill">Confident &amp; unhurried</span>
+          <p>Previews play muted until she opts in <span class="arrow">→</span> she browses in peace.</p>
+        </div>
+        <div class="row">
+          <h5>Pain Point Addressed</h5>
+          <p>Loud autoplay, failed descriptive search <span class="arrow">→</span> no muting the TV, no dead ends.</p>
+          <div class="ref">BUG-1077 · BUG-1080</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="stage s4">
+      <div class="node">4</div>
+      <div class="card">
+        <h3>Watch &amp; Return</h3>
+        <div class="tag">From one night to a ritual</div>
+        <div class="row">
+          <h5>User Action</h5>
+          <p>Finishes something new she enjoyed <span class="arrow">→</span> StreamLine becomes where her evening starts.</p>
+        </div>
+        <div class="row">
+          <h5>Internal State</h5>
+          <span class="state-pill">Satisfied &amp; loyal</span>
+          <p>A weekly digest brings fresh picks <span class="arrow">→</span> she looks forward to discovering.</p>
+        </div>
+        <div class="row">
+          <h5>Pain Point Addressed</h5>
+          <p>Comfort loop, pull toward competitors <span class="arrow">→</span> she explores again and stays subscribed.</p>
+          <div class="ref">UXR-03 · UXR-04</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="advantages">
+    <h2>Competitive Advantages Over the Manual Workaround</h2>
+    <div class="adv-grid">
+      <div class="adv">
+        <b>1. Speed with novelty</b>
+        Gets her to something new in a few curated choices.
+        <div class="vs">vs. DVD fallback: ~20 minutes, ends with titles she already owns.</div>
+      </div>
+      <div class="adv">
+        <b>2. Use of the full catalog</b>
+        Curation brings the deeper catalog back into her viewing.
+        <div class="vs">vs. Comfort loop: 4 titles out of 15,000, an easily replaced subscription.</div>
+      </div>
+      <div class="adv">
+        <b>3. Human trust, in-app</b>
+        Delivers the curated, trusted experience curation-focused rivals win on today.
+        <div class="vs">vs. Competitor's two hand-picked films a week that drew Tom away (UXR-04).</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Sources: StreamLine user research (UXR-01–12) and bug reports (BUG-1042–1121).</span>
+    <span>Benefits shown are target outcomes to validate, not measured results.</span>
+  </footer>
+
+</div>
+</body>
+</html>
